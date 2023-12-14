@@ -117,7 +117,7 @@ def update_price(id):
 # HTTP DELETE - Delete Record
 @app.route('/report-closed/<int:id>', methods=['DELETE'])
 def delete_cafe(id):
-    if request.args.get('api-key') == 'TopSecretAPIKey':
+    if request.args.get('api-key') == os.environ.get('API_KEY'):
         cafe_to_delete = db.get_or_404(Cafe, id)
         if cafe_to_delete:
                 db.session.delete(cafe_to_delete)
