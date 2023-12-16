@@ -82,17 +82,18 @@ def to_bool(value):
 # HTTP POST - Create Record
 @app.route('/add', methods=['POST'])
 def add_cafe():
+    # print(request.args.get('name'))
     new_cafe = Cafe(
-        name= request.form.get('name'),
-        map_url = request.form.get('map_url'),
-        img_url = request.form.get('img_url'),
-        location = request.form.get('loc'),
-        seats = request.form.get('seats'),
-        has_toilet = to_bool(request.form.get('toilet')),
-        has_wifi = to_bool(request.form.get('wifi')),
-        has_sockets = to_bool(request.form.get('sockets')),
-        can_take_calls = to_bool(request.form.get('calls')),
-        coffee_price = request.form.get('price')
+        name= request.args.get('name'),
+        map_url = request.args.get('map_url'),
+        img_url = request.args.get('img_url'),
+        location = request.args.get('loc'),
+        seats = request.args.get('seats'),
+        has_toilet = to_bool(request.args.get('toilet')),
+        has_wifi = to_bool(request.args.get('wifi')),
+        has_sockets = to_bool(request.args.get('sockets')),
+        can_take_calls = to_bool(request.args.get('calls')),
+        coffee_price = request.args.get('price')
     )
     db.session.add(new_cafe)
     db.session.commit()
