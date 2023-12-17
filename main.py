@@ -62,7 +62,7 @@ def all_cafes():
 @app.route('/search')
 def search_cafe():
     loc = request.args.get('loc')
-    cafes_list = db.session.execute(db.select(Cafe).where(Cafe.location.lower() == loc.lower())).scalars().all()
+    cafes_list = db.session.execute(db.select(Cafe).where(Cafe.location == loc.title())).scalars().all()
     cafe_dict=[cafe.to_dict() for cafe in cafes_list]
     if cafe_dict == []:
         return jsonify(error={
