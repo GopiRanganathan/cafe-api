@@ -84,7 +84,7 @@ def to_bool(value):
 def add_cafe():
     # print(request.args.get('name'))
     new_cafe = Cafe(
-        name= request.args.get('name').title(),
+        name= request.args.get('name'),
         map_url = request.args.get('map_url'),
         img_url = request.args.get('img_url'),
         location = request.args.get('loc'),
